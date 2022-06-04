@@ -98,7 +98,7 @@ function convert(num, input, output){
                     break;
                 }
                 else{
-                    document.querySelector("#output").textContent = "Podaj poprawną 8 bitową liczbę binarną";
+                    document.querySelector("#output").innerHTML ="Podaj poprawną 8 lub 9 (bin -> oct) bitową <br> liczbę binarną";
                     return;
                 }
 
