@@ -1,5 +1,16 @@
-@import url(https://fonts.googleapis.com/css?family=Anonymous+Pro);
-
+@import url('https://fonts.googleapis.com/css2?family=JetBrains+Mono&display=swap');
+@keyframes typewriter{
+    from{width: 0;}
+    to{width: 4em;}
+}
+@keyframes typewriter2{
+    from{width: 0;}
+    to{width: 6em;}
+}
+@keyframes blinkTextCursor{
+    from{border-right-color: rgba(255,255,255,.75);}
+    to{border-right-color: transparent;}
+}
 h1{
     position: relative;
     top: 50%;  
@@ -15,13 +26,16 @@ h1{
              blinkTextCursor 650ms steps(6) infinite normal;  
 }
 
-@keyframes typewriter{
-  from{width: 0;}
-  to{width: 4em;}
-}
-@keyframes blinkTextCursor{
-  from{border-right-color: rgba(255,255,255,.75);}
-  to{border-right-color: transparent;}
+h2{
+    position: relative;
+    top: 50%;  
+    width: 100%;
+    margin: 0 auto;
+    font-size: 2rem;
+    text-align: center;
+    white-space: nowrap;
+    overflow: hidden;
+    transform: translateY(-50%);  
 }
 *{
     margin:0;
@@ -44,21 +58,50 @@ input{
 div.input,
 div.settings{
     width:25%;
-    height:75vh;
+    height:65vh;
     border: 1px solid black;
     text-align: center;
 }
 div.output{
     width:50%;
-    height:75vh;
+    height:65vh;
     border: 1px solid black;
     text-align: center;
 }
-header,
+div.settings{
+    display:flex;
+    flex-wrap: wrap;
+    gap:20px;
+    align-items:stretch;
+}
+div.setgroup{
+    width:100%;
+}
+select{
+    width:100%;
+    height:100%;
+    font-size: 50px;
+}
+
 footer{
     width:100%;
-    height:12.5vh;
+    background-color:black;
+    height:22.5vh;
+    text-align: center;
 }
 header{
-    background: radial-gradient(circle, rgba(98,6,222,1) 1%, rgba(10,2,18,1) 120%);
+    width:100%;
+    height:12.5vh;
+    background: radial-gradient(circle, rgb(98,6,222) 1%, rgb(10,2,18) 120%);
+}
+.icon{
+    width:60px;
+    aspect-ratio: 1/1;
+}
+footer .icon >a {
+    font-size: 24px;
+    width: 60px;
+    height: 60px;
+    display: inline-block;
+
 }
