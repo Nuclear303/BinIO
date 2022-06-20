@@ -27,6 +27,59 @@ const octValues = {
     "111": 7
 }
 
+function makeHexToDec(number){
+    if(number >= 0 && number <= 9){
+        return number
+    }
+    else{
+        number = number.toLowerCase();
+        switch(number){
+            case "a":{return 10; break;}
+            case "b":{return 11; break;}
+            case "c":{return 12; break;}
+            case "d":{return 13; break;}
+            case "e":{return 14; break;}
+            case "f":{return 15; break;}
+        }
+    }
+}
+
+function decToOct(number){
+    let oct = "";
+    while(number > 0){
+        oct = `${number % 8}${oct}`;
+        number = Math.floor(number / 8);
+    }
+
+    return oct;
+}
+
+function makeHex(number){
+    if(number >=0 && number <= 9){
+        return `${number}`;
+    }
+    else{
+        switch(number){
+            case 10:{return "a"; break;}
+            case 11:{return "b"; break;}
+            case 12:{return "c"; break;}
+            case 13:{return "d"; break;}
+            case 14:{return "e"; break;}
+            case 15:{return "f"; break;}
+        }
+    } 
+    return number;
+}
+
+function decToHex(number){
+    let hex = "";
+    while(number > 0){
+        hex = `${makeHex(number % 16)}${hex}`;
+        number = Math.floor(number / 16);
+    }
+    return hex;
+}
+
 function convert(num, input, output){
     if(document.querySelector("div.output").contains(document.querySelector("#output"))){
         document.querySelector("#output").remove();
@@ -58,13 +111,15 @@ function convert(num, input, output){
                 }else{
                     return;
                 }
+                break;
             }case "hex":{
-                if(/^[0-9a-f]*$/.test(num)){
+                if(/^[0-9a-fA-F]*$/.test(num)){
                     document.querySelector("#output").textContent = num;
                     break;
                 }else{
                     return;
                 }
+                break;
             }
         }   
     }
@@ -105,21 +160,50 @@ function convert(num, input, output){
             }
             case "oct":{
                 if(/^[0-7]*$/.test(num)){
-                    document.querySelector("#output").textContent = num;
+                    switch(output){
+                        case "dec":{
+                            let result = 0;
+                            for(let i = 0; i < num.length; i++){
+                                result+= Number(num[i])*Math.pow(8, num.length-i-1);
+                            }
+                            document.querySelector("#output").textContent = result;
+                            break;
+                        }
+                    }
                     break;
                 }else{
                     return;
                 }
             }case "dec":{
                 if(/^[0-9]*$/.test(num)){
-                    document.querySelector("#output").textContent = num;
+                    switch(output){
+                        case "oct":{
+                            let oct = decToOct(num);
+                            document.querySelector("#output").textContent = oct;
+                            break;
+                        }
+                        case "hex":{
+                            let hex = decToHex(num);
+                            document.querySelector("#output").textContent = hex;
+                            break;
+                        }
+                    }
                     break;
                 }else{
                     return;
                 }
             }case "hex":{
-                if(/^[0-9a-f]*$/.test(num)){
-                    document.querySelector("#output").textContent = num;
+                if(/^[0-9a-fA-F]*$/.test(num)){
+                    switch(output){
+                        case "dec":{
+                            let result = 0;
+                            for(let i = 0; i < num.length; i++){
+                                result+= makeHexToDec(num[i])*Math.pow(16, num.length-i-1);
+                            }
+                            document.querySelector("#output").textContent = result;
+                            break;
+                        }
+                    }
                     break;
                 }else{
                     return;
