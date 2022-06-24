@@ -79,6 +79,9 @@ function decToHex(number){
     }
     return hex;
 }
+function inputError(input){
+    return `Insert valid ${input.toUpperCase()} number`
+}
 
 function convert(num, input, output){
     if(document.querySelector("div.output").contains(document.querySelector("#output"))){
@@ -93,7 +96,7 @@ function convert(num, input, output){
                     document.querySelector("#output").textContent = num;
                     break;
                 }else{
-                    document.querySelector("#output").textContent = "Podaj poprawną 8 bitową liczbę binarną";
+                    document.querySelector("#output").textContent = inputError(input);
                     return;
                 }
             }
@@ -102,6 +105,7 @@ function convert(num, input, output){
                     document.querySelector("#output").textContent = num;
                     break;
                 }else{
+                    document.querySelector("#output").textContent = inputError(input);
                     return;
                 }
             }case "dec":{
@@ -109,6 +113,7 @@ function convert(num, input, output){
                     document.querySelector("#output").textContent = num;
                     break;
                 }else{
+                    document.querySelector("#output").textContent = inputError(input);
                     return;
                 }
                 break;
@@ -117,6 +122,7 @@ function convert(num, input, output){
                     document.querySelector("#output").textContent = num;
                     break;
                 }else{
+                    document.querySelector("#output").textContent = inputError(input);
                     return;
                 }
                 break;
@@ -153,7 +159,7 @@ function convert(num, input, output){
                     break;
                 }
                 else{
-                    document.querySelector("#output").innerHTML ="Podaj poprawną 8 lub 9 (bin -> oct) bitową <br> liczbę binarną";
+                    document.querySelector("#output").textContent = inputError(input);
                     return;
                 }
 
@@ -172,6 +178,7 @@ function convert(num, input, output){
                     }
                     break;
                 }else{
+                    document.querySelector("#output").textContent = inputError(input);
                     return;
                 }
             }case "dec":{
@@ -190,6 +197,7 @@ function convert(num, input, output){
                     }
                     break;
                 }else{
+                    document.querySelector("#output").textContent = inputError(input);
                     return;
                 }
             }case "hex":{
@@ -206,6 +214,7 @@ function convert(num, input, output){
                     }
                     break;
                 }else{
+                    document.querySelector("#output").textContent = inputError(input);
                     return;
                 }
             }
